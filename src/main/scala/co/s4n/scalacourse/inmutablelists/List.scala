@@ -287,6 +287,7 @@ object List extends App {
    */
 
   def split[A](n: Int, lst: List[A]): (List[A], List[A]) = {
+    @tailrec
     def splith[A](c: Int, lst2: List[A], acum: List[A]): (List[A], List[A]) = (c, lst2) match {
       case (c, Nil) => (Nil, Nil)
       case (0, Const(h, t)) => (acum, lst2)
@@ -464,16 +465,6 @@ object List extends App {
     foldLeft(lst, (true, Nil: List[A]))(f)._2
   }
 
-  /*def dropWhileRight[A](lst: List[A])(p: A => Boolean): List[A] = {
-  def f (b: (Boolean, List[A] ), a: A): (Boolean, List[A] ) = b match {
-    case (true, lst) => if (p(a)) (false, lst) else (true, addEnd (a, lst) )
-    case (false, lst) => b
-  }
-  foldRight(lst, (Nil: List[A] ,true )) (f)._2
-
-  }*/
-
-
   /**
    *
    * @param lst
@@ -617,14 +608,5 @@ object List extends App {
 
   def SumarUnoMap(lst: List[Int]): List[Int] = mapGen(lst)(_ + 1)
 
-  def subs[A](lst: List[A]): List[List[A]] = {
-      def subsAux(lstO: List[A], acum: List[List[A]]): List[List[A]] = lstO match {
-        case Nil => acum
-        case Const(h,t) => subsAux(t, acum ::: (acum map( _ + h)))
-      }
-    subsAux(lst, Nil::Nil)
-  }
-
-  println(subs(List(1,2,3)))
 }
 
