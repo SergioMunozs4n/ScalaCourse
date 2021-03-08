@@ -1,9 +1,10 @@
 package co.s4n.scalacourse.listas
 
 import scala.annotation.tailrec
+import scala.util.Random
 
 
-object Main extends App {
+object FPList extends {
 
   /**
    * Metodo subs retorna los subconjuntos de una lista.
@@ -182,6 +183,10 @@ object Main extends App {
       val x = tail.span(head == _)
       (head :: x._1) :: myPack(x._2)}
   }
+  def pack[A](lst: List[A]): List[List[A]] = lst match {
+    case Nil => Nil
+    case x :: tail => val (head, tail) = lst.span(x == _); head :: pack(tail)
+  }
 
   /**
    * 11. La funcion myencole codifica y numera la cantidad de elementos repetidos consecutivamente.
@@ -190,9 +195,9 @@ object Main extends App {
    * @return
    */
 
-  def myencole[A](lst :List[A]): List[(A,Int)] = lst match {
+  def myencode[A](lst: List[A]): List[(Int,A)] = lst match {
     case Nil => Nil
-    case head :: tail => List(head, myPack(lst).count(head == _ ))
+    case lst => pack(lst).map(lista => (lista.length, lista.head))
   }
 
   /**
@@ -211,7 +216,7 @@ object Main extends App {
    * @return
    */
 
-  def decodeModified[A](lst: List[A]): List[A] = ???
+  def decodeModified[A](lst: List[(Int,A)]): List[A] = lst
 
   /**
    * 14. La funcion encodeDirect
@@ -229,7 +234,10 @@ object Main extends App {
    * @return
    */
 
-  def dupli[A](lst: List[A]): List[A] = ???
+  def dupli[A](lst: List[A]): List[A] = lst match{
+    case Nil => Nil
+    case head :: tail => head :: head :: dupli(tail)
+  }
 
   /**
    * 16. La funcion repli replica n veces los elementos de una lista.
@@ -239,7 +247,10 @@ object Main extends App {
    * @return
    */
 
-  def repli[A](lst: List[A], n: Int): List[A] = ???
+  /*def repli[A](lst: List[A], n: Int): List[A] = (lst,n) match {
+    case (Nil,0) => Nil
+    case (head :: tail,n) => head :: repli(tail,n-1)
+  }*/
 
   /**
    * 17. La funcion drop elimina un elemento de una n posicion.
@@ -249,7 +260,14 @@ object Main extends App {
    * @return
    */
 
-  def drop[A](lst: List[A], n: Int): List[A] = ???
+  def drop[A](n: Int, lst: List[A]): List[A] = {
+    def dropAux[A](nAux: Int, lstAux: List[A]): List[A] = (nAux,lstAux) match {
+      case (_,Nil) => Nil
+      case (1, _ :: tail) => dropAux(n,tail)
+      case (n, head :: tail) => head :: dropAux(nAux-1,tail)
+    }
+    dropAux(n, lst)
+  }
 
   /**
    * 18. La funcion split divide la lista en dos partes dependiendo un valor de longitud.
@@ -259,7 +277,16 @@ object Main extends App {
    * @return
    */
 
-  def split[A](lst: List[A], n: Int): List[A] = ???
+  def split[A](n: Int, lst: List[A]): (List[A], List[A]) = {
+    def splith[A](c: Int, lst2: List[A], acum: List[A]): (List[A], List[A]) = (c, lst2) match {
+      case (c, Nil) => (Nil, Nil)
+      case (0, head :: tail) => (acum.reverse, lst2)
+      case (c, head :: tail) => splith(c - 1, tail, (head :: acum))
+    }
+
+    splith(n, lst, Nil)
+  }
+
 
   /**
    * 19. La funcion slice genera una lista con los elementos de una lista dentro de un rango de posiciones.
@@ -270,7 +297,12 @@ object Main extends App {
    * @return
    */
 
-  def slice[A](lst: List[A], i: Int,k: Int): List[A] = ???
+  def slice[A](lst: List[A], i: Int,k: Int): List[A] = lst match {
+      case Nil => Nil
+      case head :: tail => if (i > 1) slice(tail, i - 1, k - 1)
+        else if (k > 0) head :: slice(tail, 1, k - 1)
+        else Nil
+    }
 
   /**
    * 20. La funcion rotate rota una lista N posiciones a la izquierda.
@@ -290,7 +322,11 @@ object Main extends App {
    * @return
    */
 
-  def removeAt[A](lst: List[A], n: Int): List[A] = ???
+  def removeAt[A](lst: List[A], n: Int): List[A] = lst match {
+    case Nil => Nil
+    case head :: tail => val x = split(n - 1, lst)
+      (x._1 ::: x._2.tail)
+  }
 
   /**
    * 22. La funcion range crea una lista con todos los enteros entre un rango dado.
@@ -343,11 +379,11 @@ object Main extends App {
    * @return
    */
 
-  def myRndmPermute[A](lst: List[A]): List[A] = myrndSelect(permute(lst), 1).flatten
+  def myRndmPermute[A](lst: List[A]): List[A] = myrndSelect(permutations(lst), 1).flatten
 
    def myRndmPermute2[A](lst: List[A]): List[A] = {
-    val permutada = permute(lst)
-    elementAt(permutada, Random.nextInt(permutada.length))
+    val permutada = permutations(lst)
+    elementAt(Random.nextInt(permutada.length),permutada)
   }
 
   /**
