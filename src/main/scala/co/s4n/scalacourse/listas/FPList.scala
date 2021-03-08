@@ -6,20 +6,6 @@ import scala.annotation.tailrec
 object Main extends App {
 
   /**
-   * Metodo addEnd Añade el elemento al final.
-   *
-   * @param elem
-   * @param lst
-   * @tparam A
-   * @return
-   */
-
-  def addEnd[A](elem: A, lst: List[A]): List[A] = lst match {
-    case Nil => elem :: Nil
-    case h :: t => h :: addEnd(elem, t)
-  }
-
-  /**
    * Metodo subs retorna los subconjuntos de una lista.
    *
    * @param lst
@@ -56,7 +42,7 @@ object Main extends App {
   }
 
   /**
-   * Metodo permutations
+   * Metodo permutations que permite mostar las posibles combinaciones de los elementos de una lista.
    *
    * @param lst
    * @tparam A
@@ -69,7 +55,7 @@ object Main extends App {
   }
 
   /**
-   *
+   * 1. La funcion last encuentra el ultimo elemento de una lista.
    * @param lst
    * @tparam A
    * @return
@@ -84,7 +70,7 @@ object Main extends App {
   }
 
   /**
-   *
+   * 2. La funcion MyButLast encuentra el penultimo elemento de una lista.
    * @param lst
    * @tparam A
    * @return
@@ -99,7 +85,7 @@ object Main extends App {
   }
 
   /**
-   *
+   * 3. La funcionBoth retorna una lista con el ultimo y el penultimo elemento de una lista.
    * @param lst
    * @tparam A
    * @return
@@ -114,7 +100,7 @@ object Main extends App {
   }
 
   /**
-   *
+   * 4. La funcion ElementAt encuentra el elemento de una n posicion dada.
    * @param elem
    * @param lst
    * @tparam A
@@ -127,7 +113,7 @@ object Main extends App {
   }
 
   /**
-   *
+   * 5. La funcion length retorna el tamaño de la lista.
    * @param lst
    * @tparam A
    * @return
@@ -139,7 +125,7 @@ object Main extends App {
   }
 
   /**
-   *
+   * 6. La funcion lengthL retorna el tamaño de la lista utilizando foldleft.
    * @param lst
    * @tparam A
    * @return
@@ -148,7 +134,7 @@ object Main extends App {
   def lengthL[A](lst: List[A]): Int = lst.foldLeft(0)((y, _) => 1 + y)
 
   /**
-   *
+   * 7. La funcion myreverse retorna una lista con orden reverso.
    * @param lst
    * @tparam A
    * @return
@@ -160,7 +146,7 @@ object Main extends App {
   }
 
   /**
-   *
+   * 8. La funcion isPalindrome retorna un Booleano verificando si una lista es palindrome.
    * @param lst
    * @tparam A
    * @return
@@ -172,7 +158,7 @@ object Main extends App {
   }
 
   /**
-   *
+   * 9. La funcion mycompress retorna una lista eliminadno los duplicados consecutivos de una lista.
    * @param lst
    * @tparam A
    * @return
@@ -184,7 +170,7 @@ object Main extends App {
   }
 
   /**
-   *
+   * 10. La funcion myPack empaqueta los duplicados consecutivos de una lista.
    * @param lst
    * @tparam A
    * @return
@@ -197,13 +183,117 @@ object Main extends App {
       (head :: x._1) :: myPack(x._2)}
   }
 
-  /*def myencole[A](lst :List[A]): List[(A,Int)] = lst match {
+  /**
+   * 11. La funcion myencole codifica y numera la cantidad de elementos repetidos consecutivamente.
+   * @param lst
+   * @tparam A
+   * @return
+   */
+
+  def myencole[A](lst :List[A]): List[(A,Int)] = lst match {
     case Nil => Nil
-    case head :: tail => List(head, myPack(lst).count(head == _))
-  }*/
+    case head :: tail => List(head, myPack(lst).count(head == _ ))
+  }
 
   /**
-   *
+   * 12. La funcion decodeModified numera la cantidad de elementos consecutivamente y si no tiene duplicados es un valor single.
+   * @param lst
+   * @tparam A
+   * @return
+   */
+
+  def encodeModified[A](lst: List[A]): List[(A,Int)] = ???
+
+  /**
+   * 13. La funcion decodeModified genera una lista a base de de tuplas en donde se menciona la cantidad veces que se repite un elemento consecutivamente.
+   * @param lst
+   * @tparam A
+   * @return
+   */
+
+  def decodeModified[A](lst: List[A]): List[A] = ???
+
+  /**
+   * 14. La funcion encodeDirect
+   * @param lst
+   * @tparam A
+   * @return
+   */
+
+  def encodeDirect[A](lst: List[A]): List[A] = ???
+
+  /**
+   * 15. La funcion dupli duplica elementos de una lista.
+   * @param lst
+   * @tparam A
+   * @return
+   */
+
+  def dupli[A](lst: List[A]): List[A] = ???
+
+  /**
+   * 16. La funcion repli replica n veces los elementos de una lista.
+   * @param lst
+   * @param n
+   * @tparam A
+   * @return
+   */
+
+  def repli[A](lst: List[A], n: Int): List[A] = ???
+
+  /**
+   * 17. La funcion drop elimina un elemento de una n posicion.
+   * @param lst
+   * @param n
+   * @tparam A
+   * @return
+   */
+
+  def drop[A](lst: List[A], n: Int): List[A] = ???
+
+  /**
+   * 18. La funcion split divide la lista en dos partes dependiendo un valor de longitud.
+   * @param lst
+   * @param n
+   * @tparam A
+   * @return
+   */
+
+  def split[A](lst: List[A], n: Int): List[A] = ???
+
+  /**
+   * 19. La funcion slice genera una lista con los elementos de una lista dentro de un rango de posiciones.
+   * @param lst
+   * @param i
+   * @param k
+   * @tparam A
+   * @return
+   */
+
+  def slice[A](lst: List[A], i: Int,k: Int): List[A] = ???
+
+  /**
+   * 20. La funcion rotate rota una lista N posiciones a la izquierda.
+   * @param lst
+   * @param n
+   * @tparam A
+   * @return
+   */
+
+  def rotate[A](lst: List[A], n: Int): List[A] = ???
+
+  /**
+   * 21. La funcion removeAt elimina un elemento de una n posicion.
+   * @param lst
+   * @param n
+   * @tparam A
+   * @return
+   */
+
+  def removeAt[A](lst: List[A], n: Int): List[A] = ???
+
+  /**
+   * 22. La funcion range crea una lista con todos los enteros entre un rango dado.
    * @param from
    * @param to
    * @tparam A
@@ -221,7 +311,7 @@ object Main extends App {
   }
 
   /**
-   *
+   * 23. La funcion myrndSelect extrae valores aleatorios seleccionado de una lista.
    * @param lst
    * @param n
    * @tparam A
@@ -231,13 +321,13 @@ object Main extends App {
   def myrndSelect[A](lst: List[A], n: Int): List[A] = {
     def aux(lst: List[A], lstAcc: List[A], n: Int): List[A] = n match {
       case 0 => lstAcc
-      case n => aux(lst, (elementAt(lst,Random.nextInt(lst.length)) :: lstAcc), n - 1)
+      case n => aux(lst, (elementAt(Random.nextInt(lst.length),lst) :: lstAcc), n - 1)
     }
     aux(lst, Nil, n)
   }
 
   /**
-   *
+   * 24. La funcion mydiffSelect toma N numeros aleatorios de un rango de 1 a un valor dado.
    * @param n
    * @param max
    * @tparam A
@@ -247,7 +337,7 @@ object Main extends App {
   def mydiffSelect[A](n: Int, max: Int): List[Int] = myrndSelect(range(1, max), n)
 
   /**
-   *
+   * 25. La funcion myRndmPermute genera permutaciones random de los elementos de una lista.
    * @param lst
    * @tparam A
    * @return
@@ -255,20 +345,13 @@ object Main extends App {
 
   def myRndmPermute[A](lst: List[A]): List[A] = myrndSelect(permute(lst), 1).flatten
 
-  /**
-   *
-   * @param lst
-   * @tparam A
-   * @return
-   */
-
-  def myRndmPermute2[A](lst: List[A]): List[A] = {
+   def myRndmPermute2[A](lst: List[A]): List[A] = {
     val permutada = permute(lst)
     elementAt(permutada, Random.nextInt(permutada.length))
   }
 
   /**
-   *
+   * 26. La funcion mycombinations genera la combinacion de k objetos escogidos de una losta de N elementos.
    * @param lst
    * @param k
    * @tparam A
