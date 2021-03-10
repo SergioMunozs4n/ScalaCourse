@@ -2,15 +2,15 @@
 Este repositorio aloja informacion de talleres del curso de Scala
 # Ejecucion de pruebas :memo:
 En el directorio src/test/scala/s4n/scalacourse se encontrara las pruebas unitarias de los talleres, esta esta divida de la siguiente manera:
-* **ClassesAndObjects:** Esta carpeta aloja las pruebas unitarias de los objetos Comp,Comp2 y clases Persona y Forma
+* **Taller01:** Esta carpeta aloja las pruebas unitarias correspondiente a la implementacion de funciones para objetos FunctionsArea,FunctionsRecursion y FunctionsSalary.
+* **Taller02_03:** Esta carpeta aloja las pruebas unitarias de los objetos Listas, Naturales y Arbol.
+* **Taller04:** Esta carpeta aloja las pruebas unitarias de los objetos Comp,Comp2 y clases Persona y Forma
+* **Taller05:** Esta carpeta aloja las pruebas unitarias correspondiente a la clase Color, objeto Draw y traits Felino y Forma.
+* **Taller06:** Esta carpeta aloja las pruebas unitarias del Objeto lista utilizando los 28 ejercicios de programacion funcional.
 
-* **InmutableLists:** Esta carpeta aloja las pruebas unitarias de los objetos Listas, Naturales y Arbol.
 
-* **Listas:** Esta carpeta aloja las pruebas unitarias del Objeto lista utilizando los 28 ejercicios de programacion funcional.
 
-* **TestingFunction:** Esta carpeta aloja las pruebas unitarias correspondiente a la implementacion de funciones para objetos FunctionsArea,FunctionsRecursion y FunctionsSalary.
 
-* **Traits:** Esta carpeta aloja las pruebas unitarias correspondiente a la clase Color, objeto Draw y traits Felino y Forma.
 
 # Paquetes Main :package:
 En el directorio src/main/scala/s4n/scalacourse se podra encontrar los paquetes creados para dividir objetos, clases y traits:
