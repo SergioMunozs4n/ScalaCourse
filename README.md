@@ -1,7 +1,7 @@
 # ScalaCourse
 Este repositorio aloja informacion de talleres del curso de Scala
 # Ejecucion de pruebas :memo:
-En el directorio src/test/scala/s4n/scalacourse se encontrara las pruebas unitarias de lo talleres esta esta divida de la siguiente manera:
+En el directorio src/test/scala/s4n/scalacourse se encontrara las pruebas unitarias de los talleres, esta esta divida de la siguiente manera:
 * **ClassesAndObjects:** Esta carpeta aloja las pruebas unitarias de los objetos Comp,Comp2 y clases Persona y Forma
 
 * **InmutableLists:** Esta carpeta aloja las pruebas unitarias de los objetos Listas, Naturales y Arbol.
